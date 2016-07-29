@@ -43,17 +43,17 @@ public class WuziqiPanel extends View {
 
     public WuziqiPanel(Context context, AttributeSet attrs) {
         super(context, attrs);
-        setBackgroundColor(0x44ff0000);
+        //setBackgroundColor(0x44ff0000);
         init();
     }
 
     private void init() {
+        mWhitePiece = BitmapFactory.decodeResource(getResources(), R.drawable.stone_w2);
+        mBlackPiece = BitmapFactory.decodeResource(getResources(), R.drawable.stone_b1);
         mPaint.setColor(0x88000000);
         mPaint.setAntiAlias(true);
         mPaint.setDither(true);
         mPaint.setStyle(Paint.Style.STROKE);
-        mWhitePiece = BitmapFactory.decodeResource(getResources(), R.drawable.stone_w2);
-        mBlackPiece = BitmapFactory.decodeResource(getResources(), R.drawable.stone_b1);
     }
 
     @Override
@@ -267,6 +267,13 @@ public class WuziqiPanel extends View {
     private static final String INSTANCE_WHITE_ARRAY = "instance";
     private static final String INSTANCE_BLACK_ARRAY = "instance";
 
+    public void start(){
+        mIsGameOver= false;
+        mIsWhiteWinner = false;
+        mWhiteArray.clear();
+        mBlackArray.clear();
+        invalidate();
+    }
     @Override
     protected Parcelable onSaveInstanceState() {
         Bundle bundle = new Bundle();
