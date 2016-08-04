@@ -77,12 +77,12 @@ public class WuziqiPanel extends View {
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(w, h, oldw, oldh);
         mPanelWidth = w;
         mLineHeight = mPanelWidth * 1.0f / MAX_LINE;
         int pieceWidth = (int) (mLineHeight * ratioPieceOfLineHeight);
-        mWhitePiece = Bitmap.createScaledBitmap(mWhitePiece, pieceWidth, pieceWidth, false);
         mBlackPiece = Bitmap.createScaledBitmap(mBlackPiece, pieceWidth, pieceWidth, false);
+        mWhitePiece = Bitmap.createScaledBitmap(mWhitePiece, pieceWidth, pieceWidth, false);
+        super.onSizeChanged(w, h, oldw, oldh);
 
     }
 
@@ -120,7 +120,6 @@ public class WuziqiPanel extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
         drawBoard(canvas);
         drawPieces(canvas);
         checkGameOver();
